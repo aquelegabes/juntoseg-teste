@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntoSeg.Data", "src\JuntoSeg.Data\JuntoSeg.Data.csproj", "{89A5D91E-6955-4BE1-954A-CCB2950EA7F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D8ADAF3D-FF2D-4E34-A224-CF408D1EFC3A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{E8445DD2-ED39-4736-8851-1DAC30C04D11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F88C6229-1438-4531-A2B1-0C0B84C9BDAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B55DBA75-2970-48C4-82A3-19ECB4784A6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Domain", "src\JuntoSeg.Domain\JuntoSeg.Domain.csproj", "{90AF67D4-11EC-4BC6-B52C-73E6B169C4C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Tests", "tests\JuntoSeg.Tests\JuntoSeg.Tests.csproj", "{31CF1595-6B0E-44F6-A7C9-57C968294DFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Api", "api\JuntoSeg.Api\JuntoSeg.Api.csproj", "{9D50227F-3BB5-4826-BB16-06C475E43F1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89A5D91E-6955-4BE1-954A-CCB2950EA7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A5D91E-6955-4BE1-954A-CCB2950EA7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A5D91E-6955-4BE1-954A-CCB2950EA7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A5D91E-6955-4BE1-954A-CCB2950EA7F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90AF67D4-11EC-4BC6-B52C-73E6B169C4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90AF67D4-11EC-4BC6-B52C-73E6B169C4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90AF67D4-11EC-4BC6-B52C-73E6B169C4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90AF67D4-11EC-4BC6-B52C-73E6B169C4C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CF1595-6B0E-44F6-A7C9-57C968294DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CF1595-6B0E-44F6-A7C9-57C968294DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CF1595-6B0E-44F6-A7C9-57C968294DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CF1595-6B0E-44F6-A7C9-57C968294DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D50227F-3BB5-4826-BB16-06C475E43F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D50227F-3BB5-4826-BB16-06C475E43F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D50227F-3BB5-4826-BB16-06C475E43F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D50227F-3BB5-4826-BB16-06C475E43F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{89A5D91E-6955-4BE1-954A-CCB2950EA7F3} = {D8ADAF3D-FF2D-4E34-A224-CF408D1EFC3A}
+		{90AF67D4-11EC-4BC6-B52C-73E6B169C4C2} = {E8445DD2-ED39-4736-8851-1DAC30C04D11}
+		{31CF1595-6B0E-44F6-A7C9-57C968294DFA} = {B55DBA75-2970-48C4-82A3-19ECB4784A6B}
+		{9D50227F-3BB5-4826-BB16-06C475E43F1B} = {F88C6229-1438-4531-A2B1-0C0B84C9BDAE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82625264-614E-4293-B817-0232C5B837C6}
+	EndGlobalSection
+EndGlobal
