@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -24,8 +24,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\api\JuntoSeg.Api\JuntoSeg.Api.csproj" />
-    <ProjectReference Include="..\..\JuntoSeg.Application\JuntoSeg.Application.csproj" />
-    <ProjectReference Include="..\..\JuntoSeg.Common\JuntoSeg.Common.csproj" />
+    <ProjectReference Include="..\..\src\JuntoSeg.Application\JuntoSeg.Application.csproj" />
+    <ProjectReference Include="..\..\src\JuntoSeg.Common\JuntoSeg.Common.csproj" />
+    <ProjectReference Include="..\..\src\JuntoSeg.Data\JuntoSeg.Data.csproj" />
     <ProjectReference Include="..\..\src\JuntoSeg.Domain\JuntoSeg.Domain.csproj" />
   </ItemGroup>
 

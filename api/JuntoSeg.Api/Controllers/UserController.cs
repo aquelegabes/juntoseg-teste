@@ -152,6 +152,8 @@ namespace JuntoSeg.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GenerateToken([FromHeader]int uid)
         {
+            if (uid <= 0)
+                return BadRequest();
             try
             {
                 var token = await _service.GenerateValidationToken(uid);

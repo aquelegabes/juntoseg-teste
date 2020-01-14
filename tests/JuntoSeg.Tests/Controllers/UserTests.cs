@@ -134,6 +134,71 @@ namespace JuntoSeg.Tests.Controllers
                 Assert.NotNull(modelResult);
             }
         }
+        
+        [Fact]
+        public void Add_WhenCalled_BadReq()
+        {
+            using (var mock = AutoMock.GetStrict())
+            {
+                // arrange
+                var model = new User()
+                {
+                    Id = 7,
+                    Name = "teste teste",
+                    CreatedAt = DateTime.UtcNow,
+                    Passw = CreateHashString("12345"),
+                    UpdatedAt = DateTime.UtcNow
+                };
+                var req = Mapper.Map<UserReq>(model);
+                req.NotHashedPassword = "12345";
+
+                var service = mock.Mock<IUserService>().SetupAllProperties().Object;
+                var controller = new UserController(service);
+
+                // act
+                var badReq = controller.Add(req);
+
+                // assert
+                Assert.NotNull(badReq);
+                Assert.IsType<BadRequestResult>(badReq);
+            }
+        }
+        
+        [Fact]
+        public void Add_WhenCalled_Timeout()
+        {
+            using (var mock = AutoMock.GetStrict())
+            {
+                // arrange
+                var model = new User()
+                {
+                    Id = 7,
+                    Name = "teste teste",
+                    Email = "test@test.te",
+                    CreatedAt = DateTime.UtcNow,
+                    Passw = CreateHashString("12345"),
+                    UpdatedAt = DateTime.UtcNow
+                };
+                var req = Mapper.Map<UserReq>(model);
+                req.NotHashedPassword = "12345";
+
+                mock.Mock<IUserService>()
+                    .Setup(serv => serv.Add(req))
+                    .Throws(new TimeoutException());
+
+                var service = mock.Create<IUserService>();
+                var controller = new UserController(service);
+
+                // act
+                var status500 = controller.Add(req);
+                var objectResult = status500 as ObjectResult;
+
+                // assert
+                Assert.NotNull(status500);
+                Assert.IsAssignableFrom<ObjectResult>(status500);
+                Assert.True(objectResult.StatusCode == 500);
+            }
+        }
 
         [Fact]
         public async Task Update_WhenCalled_Ok()
@@ -172,6 +237,72 @@ namespace JuntoSeg.Tests.Controllers
                 Assert.NotNull(okObjectResult);
                 Assert.IsAssignableFrom<UserResp>(okObjectResult.Value);
                 Assert.NotNull(modelResult);
+            }
+        }
+        
+        [Fact]
+        public async Task Update_WhenCalled_BadReq()
+        {
+            using (var mock = AutoMock.GetStrict())
+            {
+                // arrange
+                var model = new User()
+                {
+                    Id = 7,
+                    CreatedAt = DateTime.UtcNow,
+                    Passw = CreateHashString("12345"),
+                    UpdatedAt = DateTime.UtcNow
+                };
+                var req = Mapper.Map<UserReq>(model);
+                req.NotHashedPassword = "12345";
+
+                var service = mock.Mock<IUserService>().SetupAllProperties().Object;
+                var controller = new UserController(service);
+
+                // act
+                var result = await controller.Update(req);
+                var badReq = result as BadRequestResult;
+
+                // assert
+                Assert.NotNull(result);
+                Assert.IsAssignableFrom<BadRequestResult>(result);
+                Assert.NotNull(badReq);
+            }
+        }
+        
+        [Fact]
+        public async Task Update_WhenCalled_Timeout()
+        {
+            using (var mock = AutoMock.GetStrict())
+            {
+                // arrange
+                var model = new User()
+                {
+                    Id = 7,
+                    Name = "teste teste",
+                    Email = "test@test.te",
+                    CreatedAt = DateTime.UtcNow,
+                    Passw = CreateHashString("12345"),
+                    UpdatedAt = DateTime.UtcNow
+                };
+                var req = Mapper.Map<UserReq>(model);
+                req.NotHashedPassword = "12345";
+
+                mock.Mock<IUserService>()
+                    .Setup(serv => serv.UpdateAsync(req))
+                    .ThrowsAsync(new TimeoutException());
+
+                var service = mock.Create<IUserService>();
+                var controller = new UserController(service);
+
+                // act
+                var status500 = await controller.Update(req);
+                var objectResult = status500 as ObjectResult;
+
+                // assert
+                Assert.NotNull(status500);
+                Assert.IsAssignableFrom<ObjectResult>(status500);
+                Assert.True(objectResult.StatusCode == 500);
             }
         }
 
@@ -213,6 +344,77 @@ namespace JuntoSeg.Tests.Controllers
                 Assert.True(boolResult);
             }
         }
+        
+        [Fact]
+        public async Task Delete_WhenCalled_BadReq()
+        {
+            // arrange
+            using (var mock = AutoMock.GetStrict())
+            {
+                var model = new User()
+                {
+                    Id = 0,
+                    Name = "teste teste",
+                    Email = "test@test.te",
+                    CreatedAt = DateTime.UtcNow,
+                    Passw = CreateHashString("12345"),
+                    UpdatedAt = DateTime.UtcNow
+                };
+
+                var req = Mapper.Map<UserReq>(model);
+                req.NotHashedPassword = "12345";
+
+                var service = mock.Mock<IUserService>().SetupAllProperties().Object;
+                var controller = new UserController(service);
+
+                // act
+                var result = await controller.Delete(req);
+                var badReq = result as BadRequestResult;
+
+                // assert
+                Assert.NotNull(result);
+                Assert.IsAssignableFrom<BadRequestResult>(result);
+                Assert.NotNull(badReq);
+            }
+        }
+        
+        [Fact]
+        public async Task Delete_WhenCalled_Timeout()
+        {
+            // arrange
+            using (var mock = AutoMock.GetStrict())
+            {
+                var model = new User()
+                {
+                    Id = 7,
+                    Name = "teste teste",
+                    Email = "test@test.te",
+                    CreatedAt = DateTime.UtcNow,
+                    Passw = CreateHashString("12345"),
+                    UpdatedAt = DateTime.UtcNow
+                };
+
+                var req = Mapper.Map<UserReq>(model);
+                req.NotHashedPassword = "12345";
+
+                mock.Mock<IUserService>()
+                    .Setup(serv => serv.RemoveAsync(req))
+                    .ThrowsAsync(new TimeoutException());
+
+                var service = mock.Create<IUserService>();
+                var controller = new UserController(service);
+
+                // act
+                var status500 = await controller.Delete(req);
+                var objectResult = status500 as ObjectResult;
+
+                // assert
+                Assert.NotNull(status500);
+                Assert.IsAssignableFrom<ObjectResult>(status500);
+                Assert.NotNull(objectResult);
+                Assert.True(objectResult.StatusCode == 500);
+            }
+        }
 
         [Theory]
         [InlineData(1)]
@@ -242,6 +444,57 @@ namespace JuntoSeg.Tests.Controllers
                 Assert.NotNull(okResult);
                 Assert.IsAssignableFrom<string>(okResult.Value);
                 Assert.NotEmpty(resltToken);
+            }
+        }
+        
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public async Task GenerateToken_WhenCalled_BadReq(int userid)
+        {
+            // arrange
+            string token = ValidationToken.GenerateToken().Token;
+            using (var mock = AutoMock.GetStrict())
+            {
+                var service = mock.Mock<IUserService>().SetupAllProperties().Object;
+                var controller = new UserController(service);
+
+                // act
+                var result = await controller.GenerateToken(userid);
+                var badReq = result as BadRequestResult;
+
+                // assert
+                Assert.NotNull(result);
+                Assert.IsAssignableFrom<BadRequestResult>(result);
+                Assert.NotNull(badReq);
+            }
+        }
+        
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public async Task GenerateToken_WhenCalled_Timeout(int userid)
+        {
+            // arrange
+            string token = ValidationToken.GenerateToken().Token;
+            using (var mock = AutoMock.GetStrict())
+            {
+                mock.Mock<IUserService>()
+                    .Setup(serv => serv.GenerateValidationToken(userid))
+                    .ThrowsAsync(new TimeoutException());
+
+                var service = mock.Create<IUserService>();
+                var controller = new UserController(service);
+
+                // act
+                var status500 = await controller.GenerateToken(userid);
+                var objectResult = status500 as ObjectResult;
+
+                // assert
+                Assert.NotNull(status500);
+                Assert.IsAssignableFrom<ObjectResult>(status500);
+                Assert.NotNull(objectResult);
+                Assert.True(objectResult.StatusCode == 500);
             }
         }
     }
