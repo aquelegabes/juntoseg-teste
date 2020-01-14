@@ -9,6 +9,9 @@ namespace JuntoSeg.Data.Context
 {
     public class JuntoSegContext : DbContext
     {
+        public JuntoSegContext(string connectionString) : 
+            base(new DbContextOptionsBuilder().UseSqlite(connectionString).Options) { }
+
         public JuntoSegContext(DbContextOptions opts) : base(opts) { }
 
         public DbSet<User> Users { get; set; }

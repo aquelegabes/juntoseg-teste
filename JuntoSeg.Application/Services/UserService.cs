@@ -31,10 +31,8 @@ namespace JuntoSeg.Application.Services
             try
             {
                 var userModel = await _uow.Users.FindAsync(userId);
-                if (userModel == null)
-                    throw new ArgumentNullException();
                 var token = ValidationToken.GenerateToken();
-                token.User = userModel;
+                token.User = userModel ?? throw new ArgumentNullException();
 
                 _uow.Tokens.Add(token);
                 _uow.Commit();

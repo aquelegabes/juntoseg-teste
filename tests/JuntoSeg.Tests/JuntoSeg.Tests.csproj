@@ -23,10 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="API\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\api\JuntoSeg.Api\JuntoSeg.Api.csproj" />
+    <ProjectReference Include="..\..\JuntoSeg.Application\JuntoSeg.Application.csproj" />
     <ProjectReference Include="..\..\JuntoSeg.Common\JuntoSeg.Common.csproj" />
     <ProjectReference Include="..\..\src\JuntoSeg.Domain\JuntoSeg.Domain.csproj" />
   </ItemGroup>

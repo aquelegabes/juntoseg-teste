@@ -16,14 +16,11 @@ namespace JuntoSeg.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
-        private readonly IMapper _mapper;
 
         public UserController(
-            IUserService service,
-            IMapper mapper)
+            IUserService service)
         {
             _service = service;
-            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
@@ -33,7 +30,7 @@ namespace JuntoSeg.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get(int id)
         {
-            if (id < 0)
+            if (id <= 0)
                 return BadRequest();
             try
             {
