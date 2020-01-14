@@ -38,6 +38,7 @@ namespace JuntoSeg.Data.Repositories
 
         public void Update(T entity)
         {
+            entity.UpdatedAt = DateTime.UtcNow;
             _context.Set<T>().Update(entity);
         }
 

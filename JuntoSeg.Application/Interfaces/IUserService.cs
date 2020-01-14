@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace JuntoSeg.Application.Interfaces
 {
     public interface IUserService
-    { 
+    {
         Task<UserResp> FindAsync(int id);
         UserResp Add(UserReq user);
-        Task RemoveAsync(UserReq user);
+        Task<bool> RemoveAsync(UserReq user);
         Task<UserResp> UpdateAsync(UserReq user);
-        Task<string> GenerateValidationToken(UserReq user);
+        Task<string> GenerateValidationToken(int userId);
         bool ResetPassword(string validationToken, string newPassword);
     }
 }
