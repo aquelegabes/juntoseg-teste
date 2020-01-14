@@ -19,13 +19,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Tests", "tests\Jun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Api", "api\JuntoSeg.Api\JuntoSeg.Api.csproj", "{9D50227F-3BB5-4826-BB16-06C475E43F1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Common", "JuntoSeg.Common\JuntoSeg.Common.csproj", "{5AE8AF0A-D01C-400D-88B6-A6EE918079C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Common", "src\JuntoSeg.Common\JuntoSeg.Common.csproj", "{5AE8AF0A-D01C-400D-88B6-A6EE918079C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{6D3B267F-BF5F-44CE-826C-FF71E23ED780}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{95BB2D8C-F1D2-4509-BF66-613E9BF85EA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Application", "JuntoSeg.Application\JuntoSeg.Application.csproj", "{2E8F8A17-AD32-4C85-9260-9F3297C14593}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntoSeg.Application", "src\JuntoSeg.Application\JuntoSeg.Application.csproj", "{2E8F8A17-AD32-4C85-9260-9F3297C14593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
